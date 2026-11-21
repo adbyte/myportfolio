@@ -9,27 +9,15 @@ import { supabase } from "@/lib/supabase";
 
 
 const projects = [
-
-  { number:"01", type:"APPLIED AI · MOODY’S RATINGS", name:"Fee-Schedule Automation", description:"A multi-stage AI workflow that extracts pricing data from complex PDFs, supports human review and approvals, and publishes structured updates to downstream billing systems.", tags:["Multimodal AI","Workflow automation","Human-in-the-loop"], result:"~75% lower turnaround time", links:[{label:"PROJECT NOTES",href:"#contact"}], featured:true },
-
-  { number:"02", type:"GLOBAL WINNER · TECHNOVATION 2018", name:"EEDO", description:"A platform connecting electronic-waste generators with authorised recyclers, making responsible disposal easier to discover and act on.", tags:["Circular economy","Social impact","Mobile product"], result:"Global winner · $15,000 Gold Scholarship", links:[{label:"PRESS & STORY",href:"#journey"}], featured:true },
-
-  { number:"03", type:"COVID-ERA PRODUCT · 2020", name:"QEasy", description:"A virtual queue-management concept built after speaking with neighbourhood shopkeepers and consumers about crowding and long waits. Tested with 50+ shopkeepers and 100 consumers.", tags:["User discovery","Local commerce","Product design"], result:"Incubation & ecosystem recognition", links:[{label:"PROJECT EVIDENCE",href:"#journey"}], featured:true },
-
-  { number:"04", type:"CYBER SAFETY · COMMUNITY INITIATIVE", name:"i-Code & ORO", description:"A cyber-safety education initiative paired with an app for awareness resources and access to cyber-expert consultation. Workshops covered cyberbullying, phishing, scams and digital safety.", tags:["Digital safety","Education","Community"], result:"10,000+ children reached", links:[{label:"WORKSHOP VIDEO",href:"https://youtu.be/OQTiXSkcFjM"}], featured:true },
-
-  { number:"05", type:"INDEPENDENT PRODUCT · IN PROGRESS", name:"HuntMyHead", description:"An AI-assisted job-search workspace designed to turn scattered applications, research and follow-ups into a more intentional opportunity pipeline.", tags:["AI agents","Product thinking","Automation"], result:"Building in public", links:[{label:"PROJECT NOTES",href:"#workbench"}], featured:true },
-
-  { number:"06", type:"PROCESS INTELLIGENCE · IN PROGRESS", name:"PIVerse", description:"An exploration into reconstructing business workflows, finding bottlenecks and simulating where human-led, automated or agent-assisted processes make sense.", tags:["Process intelligence","What-if simulation","AI transformation"], result:"In progress", links:[{label:"PROJECT NOTES",href:"#workbench"}], featured:true },
-
-  { number:"07", type:"BEHAVIOURAL TECHNOLOGY", name:"EmoQuest", description:"An affective behaviour-tracking system using game environments to study signals such as avoidance, reaction latency and expressive positivity.", tags:["Behavioural signals","Game environments","Data"], result:"Academic / research project", links:[{label:"ADD PROJECT LINK",href:"#contact"}], featured:false },
-
-  { number:"08", type:"EDTECH · ACADEMIC ANALYTICS", name:"EduSight", description:"An academic monitoring and anomaly-detection project exploring automated attendance tracking and grading insights.", tags:["Education technology","Monitoring","Anomaly detection"], result:"Academic / product project", links:[{label:"ADD PROJECT LINK",href:"#contact"}], featured:false },
-
-  { number:"09", type:"SOCIAL IMPACT · EARLY INITIATIVE", name:"Girls in Technology", description:"Student-led mentoring and workshops that introduced girls to app development, computational thinking and technology, alongside Technovation ambassador work.", tags:["Mentoring","Technology access","Community"], result:"1,000+ girls reached", links:[{label:"ADD PROJECT EVIDENCE",href:"#journey"}], featured:false },
-
-  { number:"10", type:"CYBER SAFETY · PRODUCT CONCEPT", name:"ORO Cyber Safety App", description:"A cybercrime redressal and awareness concept offering safety resources, articles, quizzes and access to expert consultation.", tags:["Cyber safety","Digital citizenship","Product"], result:"Recognition from cyber-safety ecosystem", links:[{label:"ADD PROJECT EVIDENCE",href:"#journey"}], featured:false },
-
+  { number:"01", type:"PROCESS INTELLIGENCE · IN PROGRESS", name:"PIVerse", description:"An AI platform exploring workflow reconstruction, bottleneck discovery and what-if simulation to identify where human-led, automated or agent-assisted processes make sense.", tags:["Process intelligence","Workflow reconstruction","What-if simulation","AI transformation"], result:"In progress", links:[], featured:true, media:[] },
+  { number:"02", type:"AI AGENT · IN PROGRESS", name:"HuntMyHead", description:"An AI-assisted job-search workspace designed to help research opportunities, organize applications, prepare tailored materials and manage follow-ups.", tags:["AI agents","Job search","Automation","Product thinking"], result:"In progress", links:[], featured:true, media:[] },
+  { number:"03", type:"AI · DOCUMENT CREATION", name:"DOCLY", description:"AI-Powered Intelligent Document Creation, developed as an academic project for the B.Tech degree in Computer Science at Jaypee Institute of Information Technology.", tags:["AI","Document creation","Academic project"], result:"Academic project · 2025", links:[], featured:true, media:[] },
+  { number:"04", type:"BEHAVIOURAL TECHNOLOGY · ACADEMIC", name:"EmoQuest", description:"An affective behaviour detection system using gameplay mechanisms to study behavioural patterns through game-based interaction.", tags:["Affective behaviour","Gameplay","Academic project"], result:"Academic project · 2025", links:[], featured:true, media:[] },
+  { number:"05", type:"EDTECH · ACADEMIC ANALYTICS", name:"EduSight", description:"An AI-powered academic monitoring and anomaly-detection project exploring automated attendance tracking and grading insights.", tags:["Education technology","Monitoring","Anomaly detection"], result:"Academic project", links:[], featured:true, media:[] },
+  { number:"06", type:"SOCIAL IMPACT · PRODUCT", name:"QEasy", description:"A virtual queue-management system developed during COVID-19 to reduce physical queues and crowding at local stores while enabling social distancing. Customers select a store and time slot, receive a confirmation token and visit during their allotted window.", tags:["Social impact","Local commerce","Queue management","COVID-19"], result:"Tested with 50+ shopkeepers and 100+ consumers", links:[], featured:true, media:[] },
+  { number:"07", type:"CYBERSECURITY · SOCIAL IMPACT", name:"ORO", description:"A mobile application designed to help people seek cybercrime redressal while protecting privacy. Users can consult cyber experts for free and access daily tips, expert articles and weekly quizzes to improve cybersecurity awareness.", tags:["Cybersecurity","Digital safety","Mobile application"], result:"Recognised by Cyber Peace Foundation and Centre for Research of Cyber Crime", links:[], featured:true, media:[] },
+  { number:"08", type:"SUSTAINABILITY · SOCIAL IMPACT", name:"EEDO", description:"An Android application connecting electronic-waste generators with authorised recyclers to enable environmentally responsible e-waste disposal.", tags:["Sustainability","E-waste","Android","Social impact"], result:"Global Winner · Technovation Challenge 2018", links:[], featured:true, media:[] },
+  { number:"09", type:"EDUCATION · SOCIAL IMPACT", name:"Freebo", description:"An award-winning mobile app providing free books to people who want to study but cannot afford them. Books can be discovered by title, author, location and class, encouraging book reuse and reducing paper waste.", tags:["Education","Book donation","Social impact","Sustainability"], result:"Published on Play Store · downloads from 5+ countries", links:[], featured:true, media:[] },
 ];
 
 
@@ -534,17 +522,65 @@ export default function Home() {
   const [posts, setPosts] = useState<any[]>([]);
 
   const [managedProjects, setManagedProjects] = useState<any[]>([]);
-
+  const [managedAchievements, setManagedAchievements] = useState<any[]>([]);
+  const [projectsFetchFailed, setProjectsFetchFailed] = useState(false);
+  const [achievementsFetchFailed, setAchievementsFetchFailed] = useState(false);
 
   const categories = ["ALL NOTES", ...Array.from(new Set(posts.map(p => p.category)))];
-
   const visiblePosts = activeCategory === "ALL NOTES" ? posts : posts.filter(p => p.category === activeCategory);
 
-  useEffect(() => { if (!supabase) return; supabase.from("blog_posts").select("title,slug,category,excerpt,published_at").eq("published", true).order("published_at", { ascending: false }).then(({ data }) => setPosts(data || [])); supabase.from("portfolio_projects").select("*").order("sort_order").then(({data})=>setManagedProjects(data||[])); }, []);
+  useEffect(() => {
+    if (!supabase) {
+      setProjectsFetchFailed(true);
+      setAchievementsFetchFailed(true);
+      return;
+    }
 
-  const allProjects = [...projects.filter(p=>!managedProjects.some(m=>m.slug===p.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''))), ...managedProjects.map((p:any,i:number)=>({...p,number:String(i+projects.length+1).padStart(2,'0')}))];
+    let cancelled = false;
+    const loadContent = async () => {
+      const [blogResult, projectResult, achievementResult] = await Promise.all([
+        supabase.from("blog_posts").select("title,slug,category,excerpt,published_at").eq("published", true).order("published_at", { ascending: false }),
+        supabase.from("portfolio_projects").select("*").order("sort_order", { ascending: true }),
+        supabase.from("portfolio_achievements").select("*").order("sort_order", { ascending: true })
+      ]);
+      if (cancelled) return;
+      if (!blogResult.error) setPosts(blogResult.data || []);
+      if (projectResult.error) {
+        console.error("portfolio_projects fetch failed:", projectResult.error);
+        setProjectsFetchFailed(true);
+      } else {
+        setManagedProjects(projectResult.data || []);
+        setProjectsFetchFailed(false);
+      }
+      if (achievementResult.error) {
+        console.error("portfolio_achievements fetch failed:", achievementResult.error);
+        setAchievementsFetchFailed(true);
+      } else {
+        setManagedAchievements(achievementResult.data || []);
+        setAchievementsFetchFailed(false);
+      }
+    };
+    loadContent();
+    return () => { cancelled = true; };
+  }, []);
 
-  const allMilestones = milestones;
+  // Database records are authoritative when queries succeed. Static arrays are fallback only.
+  const allProjects = projectsFetchFailed ? projects : managedProjects.map((p:any,i:number)=>({
+    ...p,
+    number:String(i+1).padStart(2,'0'),
+    type:p.type || p.category || "PROJECT",
+    tags:Array.isArray(p.tags)?p.tags:[],
+    links:Array.isArray(p.links)?p.links:[],
+    media:Array.isArray(p.media)?p.media:[],
+    featured:p.featured ?? true
+  }));
+
+  const allMilestones = achievementsFetchFailed ? milestones : managedAchievements.map((a:any)=>({
+    year:a.year,title:a.title,body:a.body,kind:a.kind,evidence:a.evidence_url,
+    media:Array.isArray(a.media)?a.media:[],url:a.video_url,url2:a.press_url,
+    source:a.video_url?"WATCH VIDEO":undefined,source2:a.press_url?"READ PRESS":undefined,
+    issuer:a.issuer,issued:a.issued,links:Array.isArray(a.links)?a.links:[]
+  }));
 
 
   async function openBlog(slug: string) {
@@ -897,7 +933,7 @@ export default function Home() {
 
             <p className="eyebrow">{p.type}</p><h3>{p.name}</h3><p className="project-desc">{p.description}</p>{p.media?.filter((m:any)=>m.type?.startsWith("image/")).slice(0,1).map((m:any)=><img className="project-media-preview" key={m.path} src={m.url} alt={`${p.name} project`} loading="lazy"/>)}<div className="tag-row">{p.tags.map(t=><span className="tag" key={t}>{t}</span>)}</div>
 
-            <div className="project-card-bottom"><strong>{p.result}</strong><div className="project-links">{p.links.map(l=><a key={l.label} href={l.href} target={l.href.startsWith("http")?"_blank":undefined} rel={l.href.startsWith("http")?"noreferrer":undefined}>{l.label} ↗</a>)}</div></div>
+            <div className="project-card-bottom"><strong>{p.result}</strong><div className="project-links">{(p.links||[]).map((l:any)=><a key={l.label||l.title||l.href||l.url} href={l.href||l.url||"#"} target={(l.href||l.url||"").startsWith("http")?"_blank":undefined} rel={(l.href||l.url||"").startsWith("http")?"noreferrer":undefined}>{l.label||l.title||"OPEN LINK"} ↗</a>)}</div></div>
 
           </article>)}
 
@@ -1095,7 +1131,7 @@ export default function Home() {
 
 
 
-      {selectedProject&&<div className="milestone-modal" role="dialog" aria-modal="true" onClick={()=>setSelectedProject(null)}><div className="milestone-modal-card project-detail-modal" onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setSelectedProject(null)}>CLOSE ×</button><p className="eyebrow">{selectedProject.type} / PROJECT FILE</p><h3>{selectedProject.name}</h3><p>{selectedProject.description}</p>{selectedProject.result&&<p className="project-detail-result">{selectedProject.result}</p>}<div className="tag-row">{(selectedProject.tags||[]).map((t:string)=><span className="tag" key={t}>{t}</span>)}</div>{selectedProject.media?.map((m:any)=><a className="evidence-file" key={m.path} href={m.url} target="_blank" rel="noreferrer">{m.type?.startsWith("image/")?<img src={m.url} alt={m.name}/>:<span>OPEN DOCUMENT · {m.name} ↗</span>}</a>)}<div className="milestone-modal-links">{(selectedProject.links||[]).map((l:any)=><a key={l.label} href={l.href} target={l.href.startsWith("http")?"_blank":undefined} rel="noreferrer">{l.label} ↗</a>)}{selectedProject.github_url&&<a href={selectedProject.github_url} target="_blank" rel="noreferrer">GITHUB ↗</a>}{selectedProject.video_url&&<a href={selectedProject.video_url} target="_blank" rel="noreferrer">WATCH VIDEO ↗</a>}{selectedProject.project_url&&<a href={selectedProject.project_url} target="_blank" rel="noreferrer">PROJECT DETAILS ↗</a>}</div><p className="project-detail-foot">A project is never just the final screen. It is the question, the messy middle and what changed afterwards.</p></div></div>}
+      {selectedProject&&<div className="milestone-modal" role="dialog" aria-modal="true" onClick={()=>setSelectedProject(null)}><div className="milestone-modal-card project-detail-modal" onClick={e=>e.stopPropagation()}><button className="modal-close" onClick={()=>setSelectedProject(null)}>CLOSE ×</button><p className="eyebrow">{selectedProject.type} / PROJECT FILE</p><h3>{selectedProject.name}</h3><p>{selectedProject.description}</p>{selectedProject.result&&<p className="project-detail-result">{selectedProject.result}</p>}<div className="tag-row">{(selectedProject.tags||[]).map((t:string)=><span className="tag" key={t}>{t}</span>)}</div>{selectedProject.media?.map((m:any)=><a className="evidence-file" key={m.path} href={m.url} target="_blank" rel="noreferrer">{m.type?.startsWith("image/")?<img src={m.url} alt={m.name}/>:<span>OPEN DOCUMENT · {m.name} ↗</span>}</a>)}<div className="milestone-modal-links">{(selectedProject.links||[]).map((l:any)=><a key={l.label||l.title||l.href||l.url} href={l.href||l.url||"#"} target={(l.href||l.url||"").startsWith("http")?"_blank":undefined} rel={(l.href||l.url||"").startsWith("http")?"noreferrer":undefined}>{l.label||l.title||"OPEN LINK"} ↗</a>)}{selectedProject.github_url&&<a href={selectedProject.github_url} target="_blank" rel="noreferrer">GITHUB ↗</a>}{selectedProject.video_url&&<a href={selectedProject.video_url} target="_blank" rel="noreferrer">WATCH VIDEO ↗</a>}{selectedProject.project_url&&<a href={selectedProject.project_url} target="_blank" rel="noreferrer">PROJECT DETAILS ↗</a>}</div><p className="project-detail-foot">A project is never just the final screen. It is the question, the messy middle and what changed afterwards.</p></div></div>}
 
       <div className="curiosity-note" aria-live="polite"><span>✳</span>{cursorNote}</div>
 
@@ -1138,7 +1174,7 @@ export default function Home() {
 
           <p className="placeholder-note">SELECT A MILESTONE TO OPEN ITS STORY, PRESS, CERTIFICATES, PHOTOS OR VIDEO. ITEMS MARKED FOR ADDITION WILL BE FILLED WITH ORIGINAL MATERIAL.</p>
 
-          {selectedMilestone&&<div className="milestone-modal" role="dialog" aria-modal="true"><div className="milestone-modal-card"><button className="modal-close" onClick={()=>setSelectedMilestone(null)}>CLOSE ×</button><p className="eyebrow">{selectedMilestone.year} / JOURNEY EVIDENCE</p><h3>{selectedMilestone.title}</h3><p className="milestone-issuer">{selectedMilestone.issuer} · {selectedMilestone.issued}</p>{selectedMilestone.body&&<p>{selectedMilestone.body}</p>}{selectedMilestone.links?.map((link:any)=><a className="evidence-file" key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} ↗</a>)}{selectedMilestone.evidence&&<img src={selectedMilestone.evidence.startsWith("http")?selectedMilestone.evidence:`/evidence/${selectedMilestone.evidence}`} alt={`Evidence for ${selectedMilestone.title}`} />}{selectedMilestone.media?.map((m:any)=><a className="evidence-file" key={m.path} href={m.url} target="_blank" rel="noreferrer">{m.type?.startsWith("image/")?<img src={m.url} alt={m.name}/>:<span>PDF · {m.name}</span>}</a>)}<div className="milestone-modal-links">{selectedMilestone.url&&<a href={selectedMilestone.url} target="_blank" rel="noreferrer">{selectedMilestone.source||"OPEN FEATURE / VIDEO"} ↗</a>}{selectedMilestone.url2&&<a href={selectedMilestone.url2} target="_blank" rel="noreferrer">{selectedMilestone.source2||"MORE COVERAGE"} ↗</a>}<span>{selectedMilestone.kind}</span></div></div></div>}
+          {selectedMilestone&&<div className="milestone-modal" role="dialog" aria-modal="true"><div className="milestone-modal-card"><button className="modal-close" onClick={()=>setSelectedMilestone(null)}>CLOSE ×</button><p className="eyebrow">{selectedMilestone.year} / JOURNEY EVIDENCE</p><h3>{selectedMilestone.title}</h3><p className="milestone-issuer">{selectedMilestone.issuer} · {selectedMilestone.issued}</p>{selectedMilestone.body&&<p>{selectedMilestone.body}</p>}{selectedMilestone.links?.map((link:any)=><a className="evidence-file" key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} ↗</a>)}{selectedMilestone.evidence&&<img src={selectedMilestone.evidence.startsWith("http")?selectedMilestone.evidence:`/evidence/${selectedMilestone.evidence}`} alt={`Evidence for ${selectedMilestone.title}`} />}{selectedMilestone.media?.map((m:any)=><a className="evidence-file" key={m.path} href={m.url} target="_blank" rel="noreferrer">{m.type?.startsWith("image/")?<img src={m.url} alt={m.name}/>:<span>PDF · {m.name}</span>}</a>)}<div className="milestone-modal-links">{selectedMilestone.url&&<a href={selectedMilestone.url} target="_blank" rel="noreferrer">{selectedMilestone.source||"OPEN FEATURE / VIDEO"} ↗</a>}{selectedMilestone.url2&&<a href={selectedMilestone.url2} target="_blank" rel="noreferrer">{selectedMilestone.source2||"MORE COVERAGE"} ↗</a>}{(selectedMilestone.links||[]).map((link:any)=><a key={link.label||link.url||link.href} href={link.url||link.href||"#"} target={(link.url||link.href||"").startsWith("http")?"_blank":undefined} rel={(link.url||link.href||"").startsWith("http")?"noreferrer":undefined}>{link.label||"OPEN LINK"} ↗</a>)}<span>{selectedMilestone.kind}</span></div></div></div>}
 
         </div>
 
