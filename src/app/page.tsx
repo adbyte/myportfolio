@@ -636,7 +636,7 @@ export default function Home() {
 
     <main onMouseMove={(e)=>{const el=(e.target as HTMLElement).closest('[data-fun]');if(el)setCursorNote(el.getAttribute('data-fun')||'Curiosity looks good on you.');}} onMouseLeave={()=>setCursorNote("A small corner of the internet, built with curiosity.")}>
 
-      <div className="topline"><span>AJ<span className="dot">.</span></span><span>INDEPENDENT MIND · ENGINEERING PRACTICE</span><span>INDIA / 2026</span></div>
+      <div className="topline"><span>AJ<span className="dot">.</span></span><span>ADITI JAIN · BUILDING FOR A DIFFERENCE</span><span>PEACE / LOVE</span></div>
 
       <header className="nav-wrap">
 
