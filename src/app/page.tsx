@@ -377,15 +377,15 @@ function ResumeMenu() {
 
   useEffect(() => {
 
-    function handleClickOutside(event: globalThis.MouseEvent) {
-
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-
-        setOpen(false);
-
-      }
-
-    }
+   function handleClickOutside(event: globalThis.MouseEvent) {
+  if (
+    menuRef.current &&
+    event.target instanceof Node &&
+    !menuRef.current.contains(event.target)
+  ) {
+    setOpen(false);
+  }
+}
 
 
 
@@ -538,6 +538,7 @@ export default function Home() {
 
     let cancelled = false;
     const loadContent = async () => {
+       if (!supabase) return;
       const [blogResult, projectResult, achievementResult] = await Promise.all([
         supabase.from("blog_posts").select("title,slug,category,excerpt,published_at").eq("published", true).order("published_at", { ascending: false }),
         supabase.from("portfolio_projects").select("*").order("sort_order", { ascending: true }),
@@ -931,7 +932,7 @@ export default function Home() {
 
             <div className="project-card-top"><span className="project-number">{p.number}</span><span className="project-icon">{p.number==="01"?"⌘":p.number==="02"?"♻":p.number==="03"?"◷":p.number==="04"?"◈":p.number==="05"?"↗":p.number==="06"?"⌘":p.number==="07"?"◎":p.number==="08"?"▦":"✳"}</span></div>
 
-            <p className="eyebrow">{p.type}</p><h3>{p.name}</h3><p className="project-desc">{p.description}</p>{p.media?.filter((m:any)=>m.type?.startsWith("image/")).slice(0,1).map((m:any)=><img className="project-media-preview" key={m.path} src={m.url} alt={`${p.name} project`} loading="lazy"/>)}<div className="tag-row">{p.tags.map(t=><span className="tag" key={t}>{t}</span>)}</div>
+            <p className="eyebrow">{p.type}</p><h3>{p.name}</h3><p className="project-desc">{p.description}</p>{p.media?.filter((m:any)=>m.type?.startsWith("image/")).slice(0,1).map((m:any)=><img className="project-media-preview" key={m.path} src={m.url} alt={`${p.name} project`} loading="lazy"/>)}<div className="tag-row">{p.tags.map((t: string) => <span className="tag" key={t}>{t}</span>)}</div>
 
             <div className="project-card-bottom"><strong>{p.result}</strong><div className="project-links">{(p.links||[]).map((l:any)=><a key={l.label||l.title||l.href||l.url} href={l.href||l.url||"#"} target={(l.href||l.url||"").startsWith("http")?"_blank":undefined} rel={(l.href||l.url||"").startsWith("http")?"noreferrer":undefined}>{l.label||l.title||"OPEN LINK"} ↗</a>)}</div></div>
 
@@ -1145,7 +1146,7 @@ export default function Home() {
 
             {(showAllMilestones ? allMilestones : allMilestones.slice(0, 10)).map((m,i)=><button className="milestone-row" key={`${m.year}-${m.title}`} onClick={()=>setSelectedMilestone(m)}>
 
-              <span className="milestone-year">{m.year}</span><span className="milestone-copy"><strong>{m.title}</strong><small>{m.issuer} · {m.issued}{m.body ? ` · ${m.body}` : ""}</small></span><span className="milestone-evidence">{m.kind} <b>↗</b></span>
+              <span className="milestone-year">{m.year}</span><span className="milestone-copy"><strong>{m.title}</strong><small>{m.issuer} · {m.issued}{m.body ? ` · ${m.body}` : ""}</small></span><span className="milestone-evidence">{(m as any).kind || "ACHIEVEMENT"} <b>↗</b></span>
 
             </button>)}
 
